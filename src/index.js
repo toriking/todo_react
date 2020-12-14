@@ -1,14 +1,12 @@
+//必須
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+//コンポーネント読み込み
 import App from './App';
 
-
+//(id="root"のところに)描画
 ReactDOM.render(
-  <React.StrictMode>
-    
-    <App />
-    <h1>テスト</h1>
-  </React.StrictMode>,
+  <App />,
   document.getElementById('root')
 );
