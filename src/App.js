@@ -1,5 +1,6 @@
 import React from 'react';
-import Form from './components/Form.js'   //Formコンポーネントの呼び出し
+import Form from './components/Form.js'
+import List from './components/List.js'   
 
 class App extends React.Component {
   constructor(props){
@@ -24,6 +25,23 @@ class App extends React.Component {
     })
   }
 
+handleSubmit = (e) =>{
+  e.preventDefault();
+  if(this.state.value === '') return
+  this.state.todos.push(this.state.value)
+  this.setState({
+    todos: this.state.todos,
+    value: '',
+  })
+}
+
+handleRemove = (i) =>{
+  this.state.todos.splice(i,1)
+  this.setState({
+    todos: this.state.todos
+  })
+}
+
   render(){
     return(
       <React.Fragment>
@@ -31,6 +49,10 @@ class App extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           value={this.state.value}
+        />
+        <List
+        todos={this.state.todos}
+        handleRemove={this.handleRemove}
         />
       </React.Fragment>
     )
